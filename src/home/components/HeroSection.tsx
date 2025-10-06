@@ -20,7 +20,7 @@ export default function HeroSection() {
 
     return (
         <div
-            className={`min-h-screen relative overflow-hidden transition-colors duration-500 ${isDark ? 'bg-black text-white' : 'bg-gradient-to-br from-slate-200 to-slate-100 text-gray-900'}`}
+            className={`min-h-screen relative overflow-hidden transition-colors duration-500 ${isDark ? 'bg-black text-white' : 'bg-gradient-to-l from-neutral-300 to-neutral-50 text-gray-900'}`}
         >
             {/* Enhanced Particle System */}
             <Particle />

@@ -6,13 +6,15 @@ import BackgroundPattern from '../../components/common/BackgroundPattern';
 import SectionHeader from '../../components/common/SectionHeader';
 import AnimatedBorder from '../../components/common/AnimatedBorder';
 import FacultyCard from '../../components/ui/FacultyCard';
+import { useTheme } from '../../components/ui/ThemeContext';
 
 export default function MemberSection() {
+    const { isDark } = useTheme();
 
     return (
         <div
             id='faculty'
-            className="min-h-screen bg-black text-white relative overflow-hidden"
+            className={`min-h-max relative overflow-hidden ${isDark ? 'bg-black text-white' : 'bg-gradient-to-l from-neutral-200 to-neutral-50 text-gray-900'}`}
         >
             {/* Enhanced Background Elements */}
             <Particle />
@@ -30,7 +32,7 @@ export default function MemberSection() {
                 >
                     <div className="overflow-hidden rounded-3xl">
                         <motion.div
-                            className="flex gap-8"
+                            className="flex gap-8 pb-8"
                             animate={{
                                 x: [0, -2300]
                             }}

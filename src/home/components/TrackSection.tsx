@@ -6,14 +6,14 @@ import BackgroundPattern from '../../components/common/BackgroundPattern';
 import CountDown from '../../components/ui/CountDown';
 import SectionHeader from '../../components/common/SectionHeader';
 import AnimatedBorder from '../../components/common/AnimatedBorder';
+import { useTheme } from '../../components/ui/ThemeContext';
 
 export default function TrackSection() {
-
-
+    const { isDark } = useTheme();
 
     return (
         <div
-            className="min-h-screen bg-black text-white relative overflow-hidden"
+            className={`min-h-screen relative overflow-hidden ${isDark ? 'bg-black text-white' : 'bg-gradient-to-l from-neutral-200 to-neutral-50 text-gray-900'}`}
             id='event-details'
         >
             <Particle />
@@ -39,7 +39,7 @@ export default function TrackSection() {
                                 whileHover={{ y: -8, scale: 1.02 }}
                                 className="group relative"
                             >
-                                <div className="relative bg-black/5 backdrop-blur-xs cursor-pointer rounded-3xl border border-white/10 hover:border-white/20 transition-all duration-500 overflow-hidden shadow-2xl h-full">
+                                <div className={`relative backdrop-blur-xs cursor-pointer rounded-3xl border transition-all duration-500 overflow-hidden shadow-2xl h-full ${isDark ? 'bg-black/5 border-white/10 hover:border-white/20' : 'bg-white/5 border-gray-300/10 hover:border-gray-400/20'}`}>
                                     <motion.div
                                         className={`absolute inset-0 bg-gradient-to-br ${problem.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
                                         animate={{
@@ -53,16 +53,16 @@ export default function TrackSection() {
                                     />
 
                                     <motion.div
-                                        className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                                        className={`absolute inset-0 bg-gradient-to-br transition-opacity duration-500 ${isDark ? 'from-white/10 via-transparent to-white/5 opacity-0 group-hover:opacity-100' : 'from-gray-100/10 via-transparent to-gray-200/5 opacity-0 group-hover:opacity-100'}`}
                                     />
 
                                     <div className="relative z-10 p-6 sm:p-8 h-full flex flex-col">
                                         <div className="flex-1">
-                                            <h3 className="text-xl sm:text-2xl font-bold text-white leading-tight mb-4 line-clamp-2">
+                                            <h3 className={`text-xl sm:text-2xl font-bold leading-tight mb-4 line-clamp-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
                                                 {problem.title}
                                             </h3>
 
-                                            <p className="text-gray-300 text-sm sm:text-base leading-relaxed line-clamp-4">
+                                            <p className={`text-sm sm:text-base leading-relaxed line-clamp-4 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
                                                 {problem.description}
                                             </p>
                                         </div>
@@ -70,17 +70,17 @@ export default function TrackSection() {
                                         <div className="mt-4 flex items-center justify-between gap-2">
                                             <motion.div
                                                 whileHover={{ scale: 1.1, rotate: 5 }}
-                                                className="w-12 h-8 sm:w-14 sm:h-10 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/20 shadow-lg"
+                                                className={`w-12 h-8 sm:w-14 sm:h-10 backdrop-blur-md rounded-xl flex items-center justify-center border shadow-lg ${isDark ? 'bg-white/10 border-white/20' : 'bg-gray-900/10 border-gray-300/20'}`}
                                             >
                                                 {problem.icon}
                                             </motion.div>
-                                            <span className="inline-flex items-center px-2 py-1 bg-white/10 backdrop-blur-md text-white/90 text-xs font-medium rounded-xl border border-white/20 line-clamp-2">
+                                            <span className={`inline-flex items-center px-2 py-1 backdrop-blur-md text-xs font-medium rounded-xl border line-clamp-2 ${isDark ? 'bg-white/10 text-white/90 border-white/20' : 'bg-gray-900/10 text-gray-900/90 border-gray-300/20'}`}>
                                                 {problem.sdg}
                                             </span>
                                         </div>
 
                                         <motion.div
-                                            className="absolute inset-0 bg-gradient-to-t from-transparent via-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-3xl"
+                                            className={`absolute inset-0 bg-gradient-to-t from-transparent via-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-3xl ${isDark ? '' : 'from-gray-100/5 to-gray-200/10'}`}
                                         />
                                     </div>
                                 </div>
@@ -97,7 +97,7 @@ export default function TrackSection() {
                     className="text-center"
                 >
                     <motion.p
-                        className="text-gray-400 text-xl max-w-3xl mx-auto leading-relaxed"
+                        className={`text-xl max-w-3xl mx-auto leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1.2 }}
@@ -109,7 +109,6 @@ export default function TrackSection() {
 
             {/* Animated Bottom Border */}
             <AnimatedBorder />
-
         </div>
     );
 }
