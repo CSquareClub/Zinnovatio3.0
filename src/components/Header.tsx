@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaSun, FaMoon, FaBars, FaTimes } from 'react-icons/fa';
+import { useTheme } from './ui/ThemeContext';
 
 export default function Header() {
-    const [isDark, setIsDark] = useState(true);
+    const { isDark, toggleTheme } = useTheme();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [scrollY, setScrollY] = useState(0);
 
@@ -15,10 +16,6 @@ export default function Header() {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
-
-    const toggleTheme = () => {
-        setIsDark(!isDark);
-    };
 
     const handleNavigation = (section: string) => {
         const element = document.getElementById(section.toLowerCase().replace(' ', '-'));
@@ -74,7 +71,7 @@ export default function Header() {
                                 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={item.action}
-                                className={`font-medium cursor-pointer text-sm uppercase tracking-wider transition-all duration-300 relative group ${scrollY > 50 ? 'text-gray-300 hover:text-white' : 'text-gray-400 hover:text-gray-200'
+                                className={`font-medium cursor-pointer text-sm uppercase tracking-wider transition-all duration-300 relative group ${scrollY > 50 ? 'text-gray-300 dark:text-red-500 hover:text-white' : 'text-gray-400 hover:text-gray-200'
                                     }`}
                             >
                                 {item.label}
