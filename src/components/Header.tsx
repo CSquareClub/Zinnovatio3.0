@@ -32,7 +32,7 @@ export default function Header() {
         { label: 'Register', action: () => window.open('https://unstop.com/hackathons/zinnovatio-gen-z-innovations-hackathon-30-season-3-chandigarh-university-cu-ajitgarh-punjab-1557303?lb=sFdjeQV8&utm_medium=Share&utm_source=ProfessorAuggie&utm_campaign=Innovation_challenge', '_blank') },
         { label: 'Explore', action: () => handleNavigation('event-details') },
         { label: 'Faculty', action: () => handleNavigation('faculty') },
-        { label: 'About', action: () => handleNavigation('about') }
+        { label: 'Gallery', action: () => handleNavigation('Gallery') }
     ];
 
     const headerOpacity = Math.min(scrollY / 100, 0.95);
@@ -54,12 +54,10 @@ export default function Header() {
                 <div className="flex items-center justify-between h-16">
                     <motion.div
                         whileHover={{ scale: 1.05 }}
-                        className="flex items-center"
+                        className="flex items-center h-10 w-max"
                     >
-                        <h1 className={`text-2xl font-bold tracking-wide transition-colors duration-300 ${scrollY > 50 ? 'text-white' : 'text-gray-300'
-                            }`}>
-                            ZINNOVATIO
-                        </h1>
+                        <img src='/logo/zinn-logo.png' className='size-full' alt='logo' />
+
                     </motion.div>
 
                     <div className="hidden md:flex items-center space-x-8">
@@ -76,7 +74,7 @@ export default function Header() {
                                 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={item.action}
-                                className={`font-medium text-sm uppercase tracking-wider transition-all duration-300 relative group ${scrollY > 50 ? 'text-gray-300 hover:text-white' : 'text-gray-400 hover:text-gray-200'
+                                className={`font-medium cursor-pointer text-sm uppercase tracking-wider transition-all duration-300 relative group ${scrollY > 50 ? 'text-gray-300 hover:text-white' : 'text-gray-400 hover:text-gray-200'
                                     }`}
                             >
                                 {item.label}

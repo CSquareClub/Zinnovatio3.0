@@ -11,8 +11,7 @@ export default function GallerySection() {
 
 
     return (
-        <div className="min-h-screen bg-black text-white relative overflow-hidden" style={{
-        }}>
+        <div className="min-h-screen bg-black text-white relative overflow-hidden" id='gallery'>
             <Particle />
             <BackgroundPattern />
 

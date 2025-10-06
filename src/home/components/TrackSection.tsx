@@ -14,6 +14,7 @@ export default function TrackSection() {
     return (
         <div
             className="min-h-screen bg-black text-white relative overflow-hidden"
+            id='event-details'
         >
             <Particle />
             <BackgroundPattern />

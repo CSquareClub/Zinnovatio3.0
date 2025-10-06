@@ -11,6 +11,7 @@ export default function MemberSection() {
 
     return (
         <div
+            id='faculty'
             className="min-h-screen bg-black text-white relative overflow-hidden"
         >
             {/* Enhanced Background Elements */}
