@@ -7,6 +7,7 @@ import CountDown from '../../components/ui/CountDown';
 import SectionHeader from '../../components/common/SectionHeader';
 import AnimatedBorder from '../../components/common/AnimatedBorder';
 import { useTheme } from '../../components/ui/ThemeContext';
+import LiveRound from '../../components/ui/LiveRound';
 
 export default function TrackSection() {
     const { isDark } = useTheme();
@@ -21,7 +22,8 @@ export default function TrackSection() {
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
                 {/* Registration Countdown Timer */}
-                <CountDown />
+                {/* <CountDown /> */}
+                <LiveRound />
 
                 {/* Premium Section Header */}
                 <SectionHeader title="Choose Your" highlightWord="Project Theme" description="Select from these carefully curated problem statements to build your innovative solution. Each theme presents unique challenges that align with real-world problems." />

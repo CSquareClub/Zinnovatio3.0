@@ -1,4 +1,4 @@
-import { FaBook, FaBolt, FaCity, FaIndustry, FaHeartbeat, FaRecycle, FaLeaf, FaShieldAlt, FaTractor, FaGraduationCap, FaSolarPanel, FaRocket, FaCogs, FaHandsHelping } from "react-icons/fa";
+import { FaCity, FaHeartbeat, FaTractor, FaGraduationCap, FaSolarPanel, FaRocket, FaCogs, FaHandsHelping } from "react-icons/fa";
 import type { ITrackThemeData } from "../types/ITrack";
 
 export const trackThemeData: ITrackThemeData[] = [
