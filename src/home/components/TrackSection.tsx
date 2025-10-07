@@ -3,7 +3,6 @@ import { trackThemeData } from '../../data/TrackData';
 import type { ITrackThemeData } from '../../types/ITrack';
 import Particle from '../../components/common/Particle';
 import BackgroundPattern from '../../components/common/BackgroundPattern';
-import CountDown from '../../components/ui/CountDown';
 import SectionHeader from '../../components/common/SectionHeader';
 import AnimatedBorder from '../../components/common/AnimatedBorder';
 import { useTheme } from '../../components/ui/ThemeContext';
