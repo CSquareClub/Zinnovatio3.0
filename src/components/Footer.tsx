@@ -3,11 +3,13 @@ import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaHeart } from 'react-icons/fa';
 import { footerLinks, socialLinks } from '../data/FooterData';
 import Particle from './common/Particle';
 import AnimatedBorder from './common/AnimatedBorder';
+import { useTheme } from './ui/ThemeContext';
 
 export default function Footer() {
-    const currentYear = new Date().getFullYear();
+    const { isDark } = useTheme();
+
     return (
-        <footer className="relative bg-black text-white border-t border-gray-800/50 overflow-hidden" >
+        <footer className={`relative border-t overflow-hidden ${isDark ? 'bg-black text-white border-gray-800/50' : 'bg-gradient-to-l from-neutral-200 to-neutral-50 text-gray-900 border-gray-300/50'}`}>
             <Particle />
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -18,23 +20,23 @@ export default function Footer() {
                         className="lg:col-span-1"
                     >
                         <div className="mb-6">
-                            <h3 className="text-3xl font-bold text-white mb-2 tracking-wide">ZINNOVATIO</h3>
-                            <p className="text-gray-300 text-sm leading-relaxed">
+                            <h3 className={`text-3xl font-bold mb-2 tracking-wide ${isDark ? 'text-white' : 'text-gray-900'}`}>ZINNOVATIO</h3>
+                            <p className={`text-sm leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
                                 Empowering the next generation of innovators through technology and creativity
                             </p>
                         </div>
 
-                        <div className="space-y-3">
-                            <div className="flex items-center text-gray-300">
-                                <FaMapMarkerAlt className="mr-3 text-gray-400" />
+                        <div className={`space-y-3 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                            <div className="flex items-center">
+                                <FaMapMarkerAlt className={`mr-3 ${isDark ? 'text-gray-400' : 'text-gray-500'}`} />
                                 <span className="text-sm">Chandigarh University, Punjab</span>
                             </div>
-                            <div className="flex items-center text-gray-300">
-                                <FaPhone className="mr-3 text-gray-400" />
+                            <div className="flex items-center">
+                                <FaPhone className={`mr-3 ${isDark ? 'text-gray-400' : 'text-gray-500'}`} />
                                 <span className="text-sm">+91 XXXXX XXXXX</span>
                             </div>
-                            <div className="flex items-center text-gray-300">
-                                <FaEnvelope className="mr-3 text-gray-400" />
+                            <div className="flex items-center">
+                                <FaEnvelope className={`mr-3 ${isDark ? 'text-gray-400' : 'text-gray-500'}`} />
                                 <span className="text-sm">hello@zinnovatio.com</span>
                             </div>
                         </div>
@@ -48,7 +50,7 @@ export default function Footer() {
                             transition={{ delay: categoryIndex * 0.1, duration: 0.6 }}
                             className="lg:col-span-1"
                         >
-                            <h4 className="text-lg font-bold text-white mb-6 tracking-wide">{category}</h4>
+                            <h4 className={`text-lg font-bold mb-6 tracking-wide ${isDark ? 'text-white' : 'text-gray-900'}`}>{category}</h4>
                             <ul className="space-y-3">
                                 {links.map((link, linkIndex) => (
                                     <motion.li
@@ -59,11 +61,11 @@ export default function Footer() {
                                     >
                                         <a
                                             href={link.href}
-                                            className="text-gray-400 hover:text-white transition-colors duration-300 text-sm relative group"
+                                            className={`text-sm relative group transition-colors duration-300 ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'}`}
                                         >
                                             {link.label}
                                             <motion.div
-                                                className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-gray-400 to-gray-300 group-hover:w-full transition-all duration-300"
+                                                className={`absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 ${isDark ? 'bg-gradient-to-r from-gray-400 to-gray-300' : 'bg-gradient-to-r from-gray-500 to-gray-600'}`}
                                             />
                                         </a>
                                     </motion.li>
@@ -71,79 +73,56 @@ export default function Footer() {
                             </ul>
                         </motion.div>
                     ))}
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3, duration: 0.6 }}
+                        className="lg:col-span-1"
+                    >
+                        <h4 className={`text-lg font-bold mb-6 tracking-wide ${isDark ? 'text-white' : 'text-gray-900'}`}>Follow Us</h4>
+                        <div className="flex space-x-4">
+                            {socialLinks.map((social, index) => (
+                                <motion.a
+                                    key={social.label}
+                                    href={social.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: 0.4 + (index * 0.1), duration: 0.5 }}
+                                    whileHover={{ scale: 1.1, y: -2 }}
+                                    className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300 ${isDark ? 'bg-white/10 text-white border-white/20 hover:bg-white/20' : 'bg-gray-900/10 text-gray-900 border-gray-300/20 hover:bg-gray-900/20'}`}
+                                >
+                                    <social.icon className="text-lg" />
+                                </motion.a>
+                            ))}
+                        </div>
+                    </motion.div>
                 </div>
 
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    className="border-t border-gray-800/50 pt-12 mb-12"
-                >
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                        <div>
-                            <h4 className="text-lg font-bold text-white mb-6 tracking-wide">Follow Us</h4>
-                            <div className="flex space-x-4">
-                                {socialLinks.map((social, index) => (
-                                    <motion.a
-                                        key={social.label}
-                                        href={social.href}
-                                        initial={{ opacity: 0, scale: 0.8 }}
-                                        whileInView={{ opacity: 1, scale: 1 }}
-                                        transition={{ delay: index * 0.1, duration: 0.5 }}
-                                        whileHover={{ scale: 1.1, y: -2 }}
-                                        whileTap={{ scale: 0.9 }}
-                                        className="w-12 h-12 bg-gray-800/60 hover:bg-gray-700/80 rounded-full flex items-center justify-center border border-gray-700/50 hover:border-gray-600/70 transition-all duration-300 group"
-                                        aria-label={social.label}
-                                    >
-                                        <social.icon className="text-gray-400 group-hover:text-white transition-colors duration-300" />
-                                    </motion.a>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Newsletter Signup */}
-                        <div className="md:text-right">
-                            <h4 className="text-lg font-bold text-white mb-6 tracking-wide">Stay Updated</h4>
-                            <div className="flex flex-col sm:flex-row gap-3 max-w-md md:ml-auto">
-                                <input
-                                    type="email"
-                                    placeholder="Enter your email"
-                                    className="flex-1 px-4 py-3 bg-gray-800/60 border border-gray-700/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-gray-600/70 transition-colors duration-300"
-                                />
-                                <motion.button
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="px-6 py-3 bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 rounded-lg text-white font-medium transition-all duration-300 border border-gray-600/50"
-                                >
-                                    Subscribe
-                                </motion.button>
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
-
-                {/* Bottom Bar */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    className="border-t border-gray-800/50 pt-8"
+                    transition={{ delay: 0.6, duration: 0.8 }}
+                    className="border-t pt-8"
                 >
                     <div className="flex flex-col md:flex-row justify-between items-center">
-                        <div className="flex items-center text-gray-400 text-sm mb-4 md:mb-0">
-                            <span>© {currentYear} Zinnovatio. Made with</span>
+                        <div className="flex items-center mb-4 md:mb-0">
                             <motion.div
-                                animate={{ scale: [1, 1.3, 1] }}
-                                transition={{ duration: 1.5, repeat: Infinity }}
-                                className="mx-2 text-red-400"
+                                animate={{ rotate: [0, 10, -10, 0] }}
+                                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                                className={`mr-2 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}
                             >
-                                <FaHeart />
+                                <FaHeart className="w-5 h-5" />
                             </motion.div>
-                            <span>by innovators, for innovators</span>
+                            <span className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>by innovators, for innovators</span>
                         </div>
 
-                        <div className="flex items-center space-x-6 text-sm text-gray-400">
-                            <a href="#" className="hover:text-white transition-colors duration-300">Privacy Policy</a>
-                            <a href="#" className="hover:text-white transition-colors duration-300">Terms of Service</a>
-                            <a href="#" className="hover:text-white transition-colors duration-300">Code of Conduct</a>
+                        <div className={`flex items-center space-x-6 text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                            <a href="#" className={`transition-colors duration-300 ${isDark ? 'hover:text-white' : 'hover:text-gray-900'}`}>Privacy Policy</a>
+                            <a href="#" className={`transition-colors duration-300 ${isDark ? 'hover:text-white' : 'hover:text-gray-900'}`}>Terms of Service</a>
+                            <a href="#" className={`transition-colors duration-300 ${isDark ? 'hover:text-white' : 'hover:text-gray-900'}`}>Code of Conduct</a>
                         </div>
                     </div>
                 </motion.div>

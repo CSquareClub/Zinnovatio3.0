@@ -6,12 +6,15 @@ import Particle from '../../components/common/Particle';
 import BackgroundPattern from '../../components/common/BackgroundPattern';
 import SectionHeader from '../../components/common/SectionHeader';
 import AnimatedBorder from '../../components/common/AnimatedBorder';
+import { useTheme } from '../../components/ui/ThemeContext';
 
 export default function GallerySection() {
 
+    const { isDark } = useTheme();
 
     return (
-        <div className="min-h-screen bg-black text-white relative overflow-hidden" id='gallery'>
+        <div className={`min-h-screen relative overflow-hidden ${isDark ? 'bg-black text-white' : 'bg-gradient-to-l from-neutral-200 to-neutral-50 text-gray-900'}`} id='gallery'>
+
             <Particle />
             <BackgroundPattern />
 
@@ -30,8 +33,7 @@ export default function GallerySection() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8 }}
                                 whileHover={{ y: -15 }}
-                                className={`cursor-pointer relative p-10 rounded-3xl border backdrop-blur-md transition-all duration-500 bg-gray-800/30 border-gray-700/60
-                                    }`}
+                                className={`cursor-pointer relative p-10 rounded-3xl border backdrop-blur-md transition-all duration-500 ${isDark ? 'bg-gray-800/30 border-gray-700/60' : 'bg-gray-200/50 border-gray-400/60'}`}
                             >
                                 {event.featured && (
                                     <motion.div
@@ -39,17 +41,17 @@ export default function GallerySection() {
                                         animate={{ rotate: [0, 360], scale: [1, 1.2, 1] }}
                                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                                     >
-                                        <FaStar className="text-gray-900 text-sm" />
+                                        <FaStar className={`text-sm ${isDark ? 'text-gray-900' : 'text-gray-800'}`} />
                                     </motion.div>
                                 )}
 
                                 <div className="text-center">
-                                    <div className={`inline-block px-6 py-3 rounded-2xl ${event.highlight} mb-6 shadow-lg`}>
-                                        <span className="text-white font-bold text-lg tracking-wide">{event.title}</span>
+                                    <div className={`inline-block px-6 py-3 rounded-2xl ${event.highlight} mb-6 shadow-lg ${isDark ? 'bg-gray-800/30' : 'bg-gray-200/50'}`}>
+                                        <span className={`font-bold text-lg tracking-wide ${isDark ? 'text-white' : 'text-gray-100'}`}>{event.title}</span>
                                     </div>
-                                    <h3 className="text-3xl font-bold text-white mb-3">{event.year}</h3>
-                                    <p className="text-gray-300 text-base mb-6 leading-relaxed">{event.description}</p>
-                                    <div className="flex items-center justify-center space-x-6 text-base text-gray-400">
+                                    <h3 className={`text-3xl font-bold mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>{event.year}</h3>
+                                    <p className={`text-base mb-6 leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>{event.description}</p>
+                                    <div className={`flex items-center justify-center space-x-6 text-base ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                                         <div className="flex items-center">
                                             <FaImages className="mr-3 text-lg" />
                                             <span>{event.imageCount} Photos</span>
@@ -73,10 +75,10 @@ export default function GallerySection() {
                     className="mb-20"
                 >
                     <h3 className="text-4xl font-bold text-center mb-16 text-white">
-                        <span className="bg-gradient-to-r from-gray-200 via-white to-gray-300 bg-clip-text text-transparent">Photo Collage</span>
+                        <span className={`bg-gradient-to-r bg-clip-text text-transparent ${isDark ? 'from-gray-200 via-white to-gray-300' : 'from-gray-600 via-gray-800 to-gray-900'}`}>Photo Collage</span>
                     </h3>
 
-                    <div className="grid grid-cols-12 gap-6 auto-rows-[200px]">
+                    <div className="grid grid-cols-12 gap-6 auto-rows-[200px] ml-28">
                         {galleryImages.map((image: IGalleryImage, index: number) => {
 
                             return (

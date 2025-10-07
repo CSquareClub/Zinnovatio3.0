@@ -88,7 +88,7 @@ export default function HeroSection() {
                             }}
                             whileTap={{ scale: 0.95 }}
                             onClick={handleRegister}
-                            className={`px-10 py-4 rounded-full font-bold text-lg border-2 transition-all duration-500 ${isDark ? 'bg-gray-800/50 text-white border-gray-600 hover:bg-gray-700 hover:border-gray-500' : 'bg-white text-gray-900 border-gray-300 hover:bg-gray-100 hover:border-gray-400'}`}
+                            className={`px-10 py-4 rounded-full font-bold cursor-pointer text-lg border-2 transition-all duration-500 ${isDark ? 'bg-transparent text-white border-gray-600 hover:bg-gray-800/30' : 'bg-transparent text-gray-900 border-gray-300 hover:bg-gray-100/50'}`}
                         >
                             <span className="mr-3">Register Now</span>
                             <motion.div
@@ -103,7 +103,7 @@ export default function HeroSection() {
                             whileHover={{ scale: 1.05, opacity: 0.8 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={handleQRCode}
-                            className={`px-10 py-4 rounded-full font-bold text-lg border-2 transition-all duration-500 ${isDark ? 'bg-transparent text-white border-gray-600 hover:bg-gray-800/30' : 'bg-transparent text-gray-900 border-gray-300 hover:bg-gray-100/50'}`}
+                            className={`px-10 py-4 rounded-full font-bold cursor-pointer text-lg border-2 transition-all duration-500 ${isDark ? 'bg-transparent text-white border-gray-600 hover:bg-gray-800/30' : 'bg-transparent text-gray-900 border-gray-300 hover:bg-gray-100/50'}`}
                         >
                             <span className="mr-3">Scan QR</span>
                             <motion.div
