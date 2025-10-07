@@ -5,7 +5,5 @@ export interface IFacultyMember {
     icon: any;
     location: string;
     linkedin: string;
-    twitter: string;
-    github: string;
     experience: string;
 }

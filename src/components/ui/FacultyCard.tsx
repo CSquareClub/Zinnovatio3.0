@@ -77,9 +77,10 @@ export default function FacultyCard({ member, index }: { member: IFacultyMember,
                     </div>
 
                     <motion.button
+                        onClick={() => window.open(member.linkedin, '_blank')}
                         whileHover={{ scale: 1.1, backgroundColor: "rgba(6, 182, 212, 0.2)" }}
                         whileTap={{ scale: 0.9 }}
-                        className={`w-10 h-10 rounded-xl border transition-all duration-300 flex items-center justify-center ${isDark ? 'bg-cyan-500/20 hover:bg-cyan-500/30 border-cyan-400/30 hover:border-cyan-400/60' : 'bg-cyan-500/20 hover:bg-cyan-500/30 border-cyan-400/30 hover:border-cyan-400/60'}`}
+                        className={`w-10 h-10 rounded-xl border transition-all cursor-pointer duration-300 flex items-center justify-center ${isDark ? 'bg-cyan-500/20 hover:bg-cyan-500/30 border-cyan-400/30 hover:border-cyan-400/60' : 'bg-cyan-500/20 hover:bg-cyan-500/30 border-cyan-400/30 hover:border-cyan-400/60'}`}
                     >
                         <FaLinkedin className="text-cyan-400 text-sm" />
                     </motion.button>
